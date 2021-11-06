@@ -20,13 +20,13 @@ install.packages("path-to-CuratedCancerPrognosisData/CuratedCancerPrognosisData_
 
 ```
 
-(2) In the terminal line:
+**(2) In the terminal line:**
 
 ```
 R CMD INSTALL path-to-CuratedCancerPrognosisData/CuratedCancerPrognosisData_1.0.tar.gz
 ```
 
-After you have downloaded and installed "CuratedCancerPrognosisData", you can install "CBioExplorer" via:
+**After you have downloaded and installed "CuratedCancerPrognosisData", you can install "CBioExplorer" via:**
 
 ```
 devtools::install_github("liuxiaoping2020/CBioExplorer")
