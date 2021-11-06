@@ -32,4 +32,4 @@ R CMD INSTALL path-to-CuratedCancerPrognosisData/CuratedCancerPrognosisData_1.0.
 devtools::install_github("liuxiaoping2020/CBioExplorer")
 ```
 
-If you have any questions regarding the installation and use the CuratedCancerPrognosisData, please feel free to contact the creator and maintainer of the package, Ph.D Liu xiaoping through liuxiaoping@whu.edu.cn.
+If you have any questions regarding the installation and use of the CuratedCancerPrognosisData and CBioExplorer, please feel free to report them at https://github.com/liuxiaoping2020/CBioExplorer/issues, or you can contact the creator and maintainer of the package, Ph.D Liu xiaoping through liuxiaoping@whu.edu.cn.
