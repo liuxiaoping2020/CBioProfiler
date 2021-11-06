@@ -1,0 +1,20 @@
+Package: CBioExplorer
+Title: CBioExplorer: a web and standalone application for screening, validation, and annotation of cancer survival related biomarkers from molecular level to clinical settings
+Version: 1.0
+Authors@R: 
+    person(given = "Xiao-Ping",
+           family = "Liu",
+           role = c("aut", "cre"),
+           email = "liuxiaoping@whu.edu.cn",
+           comment = c(ORCID = "0000-0001-6179-0964"))
+Description: CBioExplorer (Cancer Biomarker Explorer) was developed to facilitate researchers and clinicians to screen,characterize, annotate and translate cancer biomarkers from molecular level to clinical settings more comfortably with graphical user interfaces (GUI). The whole pipeline of CBioExplorer includes data collection, data curation, dimensionality reduction using three methods of WGCNA, univariate Cox proportional hazards regression model, differentially expressed gene analysis, benchmark experiment with 6 machine learning learners (Lasso, Ridge, Elastic net, Glmboost, Coxboost, Randomforest) using cross validation and nested cross validation based on R package [mlr](https://cran.r-project.org/web/packages/mlr/index.html), prediction model construction using Cox proportional hazards regression model and nomogram, clinical annotation using a variety of clinical approaches, and biological annotation using over-representation analysis (ORA) and gene set enrichment analysis (GSEA).
+License: GPL (== 3)
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Depends: R (>= 3.5.0), shinydashboard, shiny, CuratedCancerPrognosisData, mlr (== 2.18.0)
+Imports: shinyBS, table1, survminer, survival, DT, psych,
+         survivalROC, tidyverse, WGCNA, ggpubr, limma, colourpicker,
+         randomForestSRC, shinyjs, enrichplot, rms, TCGAbiolinks, ReactomePA,
+         clusterProfiler, msigdbr, caret, Biobase
