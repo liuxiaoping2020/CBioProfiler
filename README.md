@@ -20,7 +20,7 @@ install.packages("path-to-CuratedCancerPrognosisData/CuratedCancerPrognosisData_
 
 ```
 
-**(2) In the terminal line:**
+**or (2) In the terminal line:**
 
 ```
 R CMD INSTALL path-to-CuratedCancerPrognosisData/CuratedCancerPrognosisData_1.0.tar.gz
