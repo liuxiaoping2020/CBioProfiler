@@ -1,4 +1,3 @@
-
 observeEvent(rawdata(), {
   data <- rawdata()$clinical
   updateSelectizeInput(
@@ -22,27 +21,14 @@ observeEvent(rawdata(), {
 
 DEGana <- eventReactive(input$DEGbt,{
   input$DEGbt
-  data <- isolate({
-    rawdata()
-  })
+  data <- isolate({ rawdata()})
+  DEGmethod <- isolate({input$DEGmethod})
 
-  DEGmethod <- isolate({
-    input$DEGmethod
-  })
+  DEGFDR <- isolate({input$DEGFDR})
+  DEGFC <- isolate({input$DEGFC})
+  DEGfactor <- isolate({input$DEGfactor})
 
-  DEGFDR <- isolate({
-    input$DEGFDR
-  })
-  DEGFC <- isolate({
-    input$DEGFC
-  })
-  DEGfactor <- isolate({
-    input$DEGfactor
-  })
-
-  DEGpadj <- isolate({
-    input$DEGpadj
-  })
+  DEGpadj <- isolate({input$DEGpadj})
   mlDEGsel<-isolate({input$mlDEGsel})
   mlgeneselp<-isolate({input$mlgeneselp})
   mlgeneselogFC<-isolate({input$mlgeneselogFC})
@@ -58,7 +44,16 @@ DEGana <- eventReactive(input$DEGbt,{
 
   clinical[clinical == ""] <- NA
   clinical<-clinical[complete.cases(clinical[,DEGfactor]),]
-if(mode(clinical[,DEGfactor])=="numeric"){
+  if(is.numeric(clinical[,DEGfactor])==F){
+    clinical[,DEGfactor]<-gsub(' ','',clinical[,DEGfactor])
+    clinical[,DEGfactor]<-gsub('-','_',clinical[,DEGfactor])
+  }
+
+  index <- intersect(names(expres), row.names(clinical))
+  clinical <- clinical[index, ]
+  expres <- expres[, index]
+  group <- factor(clinical[, DEGfactor])
+if(is.numeric(clinical[,DEGfactor])){
   createAlert(
     session,
     "DEGmsg",
@@ -70,15 +65,8 @@ if(mode(clinical[,DEGfactor])=="numeric"){
     dismiss=T
   )
   return(NULL)
-}else{
-  clinical[,DEGfactor]<-gsub(' ','',clinical[,DEGfactor])
-  clinical[,DEGfactor]<-gsub('-','_',clinical[,DEGfactor])
-  index <- intersect(names(expres), row.names(clinical))
-  clinical <- clinical[index, ]
-  expres <- expres[, index]
+}else if(length(levels(group))==1 || length(levels(group))>10){
 
-  group <- factor(clinical[, DEGfactor])
-  if(levels(group)==1 || levels(group)>10){
     createAlert(
       session,
       "DEGmsg",
@@ -91,68 +79,12 @@ if(mode(clinical[,DEGfactor])=="numeric"){
     )
     return(NULL)
   }else{
-
-  # print(1)
-  # y <- DGEList(counts = expres, group = group)
-  # if (filterDEG == TRUE) {
-  #   CPM <- cpm(y)
-  #   check <- CPM > filnumb
-  #   retain <- which(rowSums(check) >= leasamp)
-  #   y <- y[retain, ]
-  # }
-  # if (DEGmethod == "edgeR-QLF") {
-  #   withProgress(message = "Performing differential expression analysis using edgeR-QLF pipeline",
-  #                detail = "This may take a while...",
-  #                value = 3,
-  #                {
-  #                  y <- calcNormFactors(y, method = DEGnorm)
-  #                  design <- model.matrix(~ group)
-  #                  y <- estimateDisp(y, design)
-  #                  fit <- glmQLFit(y, design)
-  #                  qlf <- glmQLFTest(fit, coef = 2)
-  #                  DEG <-
-  #                    topTags(
-  #                      qlf ,
-  #                      sort.by = "logFC",
-  #                      n = nrow(expres),
-  #                      adjust.method = DEGpadj
-  #                    )
-  #                  # print(names(DEG$table))
-  #                  DEG <- DEG$table
-  #                  names(DEG) <- c("LogFC", "logCPM", "LR", "PValue", "AdjustedP")
-  #                  res<-list(DEG=DEG, group=group, expres=expres,clinical=clinical)
-  #                })
-  # } else if (DEGmethod == "edgeR-LRT") {
-  #   withProgress(message = "Performing differential expression analysis using edgeR-LRT pipeline",
-  #                detail = "This may take a while...",
-  #                value = 3,
-  #                {
-  #                  y <- calcNormFactors(y, method = DEGnorm)
-  #                  design <- model.matrix(~ group)
-  #                  y <- estimateDisp(y, design)
-  #                  fit <- glmFit(y, design)
-  #                  lrt <- glmLRT(fit, coef = 2)
-  #                  DEG <-
-  #                    topTags(
-  #                      lrt ,
-  #                      sort.by = "logFC",
-  #                      n = nrow(expres),
-  #                      adjust.method = DEGpadj
-  #                    )
-  #                  # print(names(DEG$table))
-  #                  DEG <- DEG$table
-  #                  names(DEG) <- c("LogFC", "logCPM", "LR", "PValue", "AdjustedP")
-  #                  res<-list(DEG=DEG, group=group, expres=expres,clinical=clinical)
-  #                })
-  # } else if (DEGmethod == "limma") {
     withProgress(message = 'Performing differential expression analysis using Limma',
                  detail = 'This may take a while...',
                  value = 3,
                  {
                    expres <- as.matrix(expres)
-
-                   quant <-
-                     as.numeric(quantile(expres, c(0., 0.25, 0.5, 0.75, 0.99, 1.0), na.rm = T))
+                   quant <- as.numeric(quantile(expres, c(0., 0.25, 0.5, 0.75, 0.99, 1.0), na.rm = T))
 
                    val <- (quant[5] > 100) ||
                      (quant[6] - quant[1] > 50 &&
@@ -162,16 +94,10 @@ if(mode(clinical[,DEGfactor])=="numeric"){
                      expres[which(expres <= 0)] <- NaN
                      expres <- log2(expres)
                    }
-
                    expres <- as.data.frame(expres)
-
-                   design <-
-                     model.matrix( ~ group + 0, expres)
-                   colnames(design) <-
-                     levels(group)
-
+                   design <- model.matrix( ~ group + 0, expres)
+                   colnames(design) <- levels(group)
                    fit <- lmFit(expres, design)
-
                    Grp <- levels(group)
                    if (length(Grp) == 2) {
                      comp <- paste(Grp[1], Grp[2], sep = "-")
@@ -179,48 +105,17 @@ if(mode(clinical[,DEGfactor])=="numeric"){
                      comp <- paste(Grp, c(tail(Grp,-1), head(Grp, 1)), sep = "-")
                    }
 
-
-                   cont.matrix <-
-                     makeContrasts(contrasts = comp, levels = design)
-                   fit2 <-
-                     contrasts.fit(fit, cont.matrix)
+                   cont.matrix <-makeContrasts(contrasts = comp, levels = design)
+                   fit2 <- contrasts.fit(fit, cont.matrix)
                    fit2 <- eBayes(fit2)
 
-                   DEG <-
-                     topTable(fit2, adjust.method = DEGpadj,number =(nrow(expres)))
-                   names(DEG) <-
-                     c("LogFC", "AveExpr", "t", "PValue", "AdjustedP", "B")
-
+                   DEG <- topTable(fit2, adjust.method = DEGpadj,number =(nrow(expres)))
+                   names(DEG) <- c("LogFC", "AveExpr", "t", "PValue", "AdjustedP", "B")
                    res<-list(DEG=DEG, group=group, expres=expres,clinical=clinical)
                  })
-
-  # }
-  # else if (DEGmethod == "DESeq2") {
-  #   withProgress(message = "Performing differential expression analysis using DEGSeq2",
-  #                detail = "This may take a while...",
-  #                value = 3,
-  #                {
-  #                  #desForm <- paste("~", DEGfactor, sep = " ")
-  #                  #dds <-
-  #                    #DESeqDataSetFromMatrix(y, colData = clinical, design = as.formula(desForm))
-  #                  dds<-DESeqDataSetFromMatrix(y, colData = DataFrame(group), design =  ~ group)
-  #
-  #                  dds <- DESeq(dds)
-  #                  res <- results(dds, pAdjustMethod = DEGpadj)
-  #                  DEG <- as.data.frame(res)
-  #                  names(DEG) <-
-  #                    c("BaseMean",
-  #                      "LogFC",
-  #                      "LfcSE",
-  #                      "Stat",
-  #                      "Pvalue",
-  #                      "AdjustedP")
-  #                  res<-list(DEG=DEG, group=group, expres=expres,clinical=clinical)
-  #                })
-  #  }
   res
   }
-}
+
 })
 
 observeEvent(input$DEGbt, {
