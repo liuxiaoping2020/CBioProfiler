@@ -24,7 +24,7 @@ CBioExplorer has reviewed, curated and integrated 45 common blood and solid tumo
 
 To promote the use of these public data, we developed an R package "CuratedCancerPrognosisData", which is a necessary condition for CBioExplorer to run public data.
 
-To install CuratedCancerPrognosisData package you can download the associated source code to you local disk at https://drive.google.com/file/d/1tfgjDWDiGDTvwscIXW12HtLgrPKUNqcE/view?usp=sharing or XXX and:
+To install CuratedCancerPrognosisData package you can download the associated source code to you local disk at https://drive.google.com/file/d/1tfgjDWDiGDTvwscIXW12HtLgrPKUNqcE/view?usp=sharing or XXX and install [Rtools](https://cran.r-project.org/bin/windows/Rtools/) in accordance with your operaction system and then:
 
 **(1) In the R console:**
 
