@@ -59,6 +59,7 @@ observeEvent(input$msurvopbt, {
     message = "Starting resample experiment",
     detail = "According to your parameter settings, it may take a long time, please be patient",
     value = 5,{
+      seed<-as.numeric(isolate({input$seed}))
 
       OS.time<-isolate({input$nrtime})
       OS<-isolate({input$nrstatus})
@@ -146,7 +147,8 @@ observeEvent(input$msurvopbt, {
         inner = inner,
         outer = outer,
         lnid = Learner,
-        split=split
+        split=split,
+        seed=seed
       )
 
       }else {
@@ -158,7 +160,8 @@ observeEvent(input$msurvopbt, {
                 lnid=Learner,
                 inner=inner,
                 ctrl=ctrl,
-                rdesc=rdesc
+                rdesc=rdesc,
+                seed=seed
                 )
 
       }
@@ -221,6 +224,7 @@ observeEvent(input$nrbt, {
 
 observeEvent(nestrun(), {
   shinyjs::show("modelcomp_wrapper")
+  shinyjs::show("biomarkout_wrapper.table")
   enable("nrbt")
 })
 
@@ -236,6 +240,21 @@ observeEvent(input$nrbt,{
     }
   )
 })
+
+observeEvent(input$nrbt, {
+  output$biomarkout <-  DT::renderDT({
+    nestrun()$listidx
+  })
+})
+
+output$savebiomarkout <- downloadHandler(
+  filename = function() {
+    paste0("Benchmark-experiment-biomark-output-",Sys.Date(), ".csv")
+  },
+  content = function(file) {
+    write.csv(nestrun()$listidx, file)
+  }
+)
 
 
 observeEvent(input$nrbt,{
@@ -288,6 +307,9 @@ output$downloadmodelcomp <- downloadHandler(
     dev.off()
   }
 )
+
+
+
 
 observeEvent(input$page_before_nestr, {
   newtab <- switch(input$tabs, "DEG" = "nestr","nestr" = "DEG")
