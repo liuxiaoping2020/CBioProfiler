@@ -16,7 +16,7 @@ observe({
                        selected = "TP53")
 })
 
-stemrun<-reactive({
+stemrun<-eventReactive(input$stembt,{
   input$stembt
   data <- isolate({
     rawdata()
