@@ -25,6 +25,7 @@ suppressPackageStartupMessages({
   library(caret)
   library(Biobase)
   library(CuratedCancerPrognosisData)
+  library("ggplotify")
 })
 
 
