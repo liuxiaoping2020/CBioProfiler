@@ -54,6 +54,7 @@ yearlabelx <- reactive({
   req(input$SurvROCtime)
   SurvROCtime<-isolate({input$SurvROCtime})
   data <- rawdata()$clinical
+  if(SurvROCtime %in% names(data)){
   time<-data[,SurvROCtime]
 
   if(is.numeric(time)==F){
@@ -83,6 +84,7 @@ yearlabelx <- reactive({
     yearlabel[i]<- paste(i,"year",sep="-")
   }
   yearlabel
+  }
   }
 })
 
