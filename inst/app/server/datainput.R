@@ -230,7 +230,7 @@ observeEvent(input$page_after_datainput, {
   updateTabItems(session, "tabs", newtab)
   shinyjs::runjs("window.scrollTo(0, 50)")
 })
-
+  
 
 
 
