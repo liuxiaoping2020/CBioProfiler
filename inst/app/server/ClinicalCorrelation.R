@@ -178,3 +178,4 @@ observeEvent(input$page_after_clinical, {
   updateTabItems(session, "tabs", newtab)
   shinyjs::runjs("window.scrollTo(0, 50)")
 })
+
