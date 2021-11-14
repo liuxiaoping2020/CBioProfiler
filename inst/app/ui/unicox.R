@@ -23,8 +23,8 @@ tabItem(
                bsTooltip("msurvtime", "Select the survival time column for univariate CoxPH analysis","left"),
                selectizeInput('msurvstatus', "Survival status",choices = NULL, selected = "OS"),
                bsTooltip("msurvstatus", "Select the survival Status column for univariate CoxPH analysis","left"),
-               selectizeInput('msurvcor', "Adjusting method", choices =c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY","fdr") , selected = "fdr"),
-               bsTooltip("msurvcor", "Specify the correction method","left"),
+               # selectizeInput('msurvcor', "Adjusting method", choices =c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY","fdr") , selected = "fdr"),
+               # bsTooltip("msurvcor", "Specify the correction method","left"),
                actionButton("msurvbt",
                             "Submit",
                             style = "background-color: #000080;
@@ -71,6 +71,8 @@ tabItem(
              status = "danger",
              solidHeader = T,
              collapsible = T,
+             selectizeInput('msurvcor', "Adjusting method", choices =c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY","fdr") , selected = "fdr"),
+             bsTooltip("msurvcor", "Specify the correction method","left"),
              selectizeInput('msurvsel', "Significance cutoff method", choices =c("P value", "Adjusted P value") , selected = "Adjusted P value"),
              bsTooltip("msurvsel", "Specify the method to select to most signifcant survival related genes.","left"),
              conditionalPanel(
@@ -88,7 +90,7 @@ tabItem(
              ),
 
              actionButton("msurvopbt",
-                          "Output most signifcant survival genes",
+                          "Submit",
                           style = "background-color: #000080;
                                             color: #FFFFFF;
                                             margin-left: auto;
