@@ -198,7 +198,7 @@ plotKM <- eventReactive(input$KMplotbt,{
     xlab = survxlab,
     legend.labs = c(e, f)
   )
-  print(res)
+  res
 }
 })
 
@@ -216,7 +216,7 @@ observe({
 observeEvent(input$KMplotbt, {
   output$KMploting <-  renderPlot(
 
-    {plotKM()}
+    {print(plotKM())}
     )
 })
 
