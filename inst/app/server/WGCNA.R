@@ -17,7 +17,7 @@ observe({
 })
 
 
-pres<-reactive({
+pres<-eventReactive(input$datacleanbt,{
   input$datacleanbt
   data <- isolate({
     rawdata()
