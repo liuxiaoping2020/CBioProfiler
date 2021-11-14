@@ -67,7 +67,7 @@ observeEvent(glevel(),{
   updateSelectInput(session, "comparefer", choices = glevel())
 })
 
-genedifffun<-reactive({
+genedifffun<-eventReactive(input$genediffbt,{
   input$genediffbt
   data <- isolate({
     rawdata()
