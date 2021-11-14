@@ -32,7 +32,7 @@ observeEvent(rawdata(), {
   )
 })
 
-yearlabel <- reactive({
+yearlabel <- eventReactive(nestrun(),{
   req(input$bmtime)
   req(nestrun())
   res<-isolate({nestrun()})
