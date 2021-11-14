@@ -30,7 +30,6 @@ To install CuratedCancerPrognosisData package you can download the associated so
 
 ```{r setup, include=FALSE}
 install.packages("path-to-CuratedCancerPrognosisData/CuratedCancerPrognosisData_1.0.tar.gz", repos = NULL, type="source")
-
 ```
 
 **or (2) In the terminal line:**
