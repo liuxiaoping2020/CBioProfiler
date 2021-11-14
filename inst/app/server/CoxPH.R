@@ -67,7 +67,7 @@ observe({
 })
 
 
-coxPHmodel <- reactive({
+coxPHmodel <- eventReactive(input$CoxPHbt,{
   input$CoxPHbt
   data <- isolate({
     rawdata()
