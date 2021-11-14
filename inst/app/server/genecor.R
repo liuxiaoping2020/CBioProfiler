@@ -24,7 +24,7 @@ observe({
 }
 )
 
-ggcor<-reactive({
+ggcor<-eventReactive(input$genecorbt,{
   input$genecorbt
   data <- isolate({
     rawdata()
