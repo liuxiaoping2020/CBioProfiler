@@ -6,7 +6,7 @@
 
 ## Licence
 
-Open source under GPLV3.0. Both 'CBioExplorer' software and curated cancer gene expression data 'CuratedCancerPrognosisData' are free for academic but **non-commercial** use.
+Open source under GPLV3.0. Both 'CBioExplorer' software and curated cancer gene expression data 'CuratedCancerPrognosisData' are free for academic but ***non-commercial*** use.
 
 ## Citation
 
