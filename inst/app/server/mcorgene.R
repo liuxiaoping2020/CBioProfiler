@@ -18,7 +18,7 @@ observe({
 
 
 
-mcor<- reactive({
+mcor<- eventReactive(input$mcorgenebt,{
   input$mcorgenebt
   withProgress(message = "Performing correlation analsis",
                detail = "This may take a while...",
