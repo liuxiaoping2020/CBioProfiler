@@ -30,7 +30,7 @@ observeEvent(rawdata(), {
   )
 })
 
-yearlabel2 <- reactive(
+yearlabel2 <- eventReactive(nestrun(),
   {
   req(input$nomotime)
   nomotime<-isolate({input$nomotime})
