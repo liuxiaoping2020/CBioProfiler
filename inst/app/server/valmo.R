@@ -39,6 +39,7 @@ yearlabel1 <- reactive({
   req(input$Valtime)
   Valtime<-paste(input$Valtime)
   data <- rawdata2()$clinical
+  if(Valtime %in% names(data)){
   time<-data[,Valtime]
   if(is.numeric(time)==F){
     createAlert(
@@ -65,6 +66,7 @@ yearlabel1 <- reactive({
     yearlabel1[i]<- paste(i,"year",sep="-")
   }
   yearlabel1
+  }
   }
 })
 
