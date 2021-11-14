@@ -49,7 +49,7 @@ msurvfun<-eventReactive(input$msurvbt,{
   OS.time<-isolate({input$msurvtime})
   OS<-isolate({input$msurvstatus})
 
-  method<-isolate({input$msurvcor})
+  # method<-isolate({input$msurvcor})
   clinical<-clinical[complete.cases(clinical[,OS.time])&clinical[,OS.time]>0,]
   index<-intersect(row.names(clinical),names(expres))
   clinical<-clinical[index,]
@@ -85,7 +85,7 @@ msurvfun<-eventReactive(input$msurvbt,{
   res<-unicox(OS.time,OS,expres)
   res<-as.data.frame(res)
   res<-na.omit(res)
-  res$P.adjusted<-p.adjust(res$PValue, method = method)
+  # res$P.adjusted<-p.adjust(res$PValue, method = method)
   list(res=res,clinical=clinical,expres=expres)
   }
                })
@@ -149,7 +149,8 @@ output$downloadunicoxtable <- downloadHandler(
 msurvsig<-reactive({
   input$msurvopbt
   res<-isolate({msurvfun()$res})
-
+  method<-isolate({input$msurvcor})
+  res$P.adjusted<-p.adjust(res$PValue, method = method)
   if(isolate({input$msurvsel})=="P value"){
     sigres<-res[res$PValue<isolate({input$msurvp}),]
   } else{
