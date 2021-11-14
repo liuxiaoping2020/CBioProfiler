@@ -1,3 +1,19 @@
+sumz<-function(x){
+  p<-sum(na.omit(x)==0)/length(x)
+  return(p)
+}
+rmz<-function(x,per){
+  idx<-apply(x,1,sumz)
+  
+  index<-which(idx>per)
+  if(length(index)>0){
+    x<-x[-index,]
+  }else{
+    x
+  }
+
+  return(x)
+}
 
 stem<-function(exp,gene,method){
   library(TCGAbiolinks)
@@ -504,7 +520,6 @@ extvalid<-function(extdata,variable,res,ratio,boostrap,time,status,yearpoint){
   names(testset)<-gsub("/","_",names(testset))
   names(testset)<-gsub(" ","_",names(testset))
 
-
   test.task <- makeSurvTask(data = testset, target = c("time","status"))
 
   if(res$lrnid=="RandomForestSRC"){
@@ -967,7 +982,6 @@ htm <-function(
     column_names_side = Cnameside,
     column_split = group
   )
-
 }
 
 
@@ -1122,14 +1136,16 @@ MAplt <-
 
 
 padjplt<-function(DEG,col){
-  hist(
+  as.ggplot(function() hist(
     DEG$AdjustedP,
     col = col,
     border = "white",
     xlab = "Adjusted P value",
     ylab = "Number of genes",
-    main = "Adjusted P value distribution"
-  )
+    main = "Adjusted P value distribution",
+    plot=T
+  ))
+  
 }
 
 
@@ -1623,13 +1639,14 @@ netres <- function(clinical,
 
 #######################################################################################################################
 #######################################################################################################################
-nestml<-function(expres,clinical,split,endpoint,ratio,ctrl,inner,outer,lnid){
+nestml<-function(expres,clinical,split,endpoint,ratio,ctrl,inner,outer,lnid,seed){
   require(caret)
   require(mlr)
   require(randomForestSRC)
   expres$time<-clinical[,endpoint[1]]
   expres$status<-clinical[,endpoint[2]]
   if(split==T){
+    set.seed(seed)
     index <- createDataPartition(expres$status, p = ratio, list = FALSE)
     trainset<-expres[index,]
     testset<-expres[-index,]
@@ -1694,7 +1711,7 @@ nestml<-function(expres,clinical,split,endpoint,ratio,ctrl,inner,outer,lnid){
 
   idx<-match(lnid,c("RandomForestSRC","Glmboost","Coxboost","ElasticNet","Ridge","Lasso"))
   lrns<-lrns[idx]
-  set.seed(123)
+  set.seed(seed)
   res = benchmark(lrns, train.task, outer, keep.extract = T)
 
   #fit the best-performing model, get predictions and conduct feature selection
@@ -1940,7 +1957,7 @@ nestml<-function(expres,clinical,split,endpoint,ratio,ctrl,inner,outer,lnid){
 }
 
 
-cv<-function(expres,clinical,split,endpoint,ratio,lnid,inner,ctrl,rdesc){
+cv<-function(expres,clinical,split,endpoint,ratio,lnid,inner,ctrl,rdesc,seed){
   require(caret)
   require(mlr)
   require(randomForestSRC)
@@ -1996,7 +2013,7 @@ cv<-function(expres,clinical,split,endpoint,ratio,lnid,inner,ctrl,rdesc){
   } else (stop("The rownames of clinical dataframe and gene expression dataframe are not identical."))
 
   if(split==T){
-    set.seed(123)
+    set.seed(seed)
     # print(summary(expres$status))
     # print(expres$status)
     # print(sum(is.na(expres$status)))
@@ -2026,7 +2043,7 @@ cv<-function(expres,clinical,split,endpoint,ratio,lnid,inner,ctrl,rdesc){
 
   modelcv<-lapply(mset,FUN=modeltune,task=train.task,inner=inner, ctrl=ctrl)
   if(split==F){
-    set.seed(123)
+    set.seed(seed)
     res = benchmark(modelcv, train.task, rdesc, keep.extract = T)
     outmeasure<-print(res)
     #fit the best-performing model, get predictions and conduct feature selection
@@ -2113,7 +2130,7 @@ cv<-function(expres,clinical,split,endpoint,ratio,lnid,inner,ctrl,rdesc){
     names(res)<-c("Benchmark result","Selected variables", "Fitted model", "lrnid","expres","clinical","listidx")
 
   }}else{
-    set.seed(123)
+    set.seed(seed)
     res = benchmark(modelcv, test.task, rdesc, keep.extract = T)
     outmeasure<-print(res)
     if(all(outmeasure$cindex.test.mean %in%  NaN)){
