@@ -1,8 +1,9 @@
 tabItem(
   tabName = "nestr",
   fluidPage(
-    column(9,box(
-    title = "C-index comparison of survival models based on benchmark experiment",
+    column(9,
+           box(
+    title = "Benchmark experiment output",
     width = NULL,
     height=NULL,
     solidHeader = T,
@@ -11,6 +12,8 @@ tabItem(
     align="center",
     status = "success",
     bsAlert("nestrmess"),
+    tabBox(width = NULL,
+    tabPanel("Cindex comparison", align="center",
      uiOutput('modelcomp'),
      textOutput(outputId = "modeldescrip"),
     fluidRow(column(4,align="left",
@@ -21,6 +24,17 @@ tabItem(
                                downloadButton('downloadmodelcomp', 'Download figure', class = "butt2")
                     ))
     ))
+  ),
+    tabPanel("Biomarker output", dataTableOutput('biomarkout'),
+             useShinyjs(),
+             fluidRow(column(4,align="left",
+                             hidden(div(id = "biomarkout_wrapper.table",
+                                        downloadButton('savebiomarkout', 'Download table', class = "butt2")
+                             ))
+             ))
+    )
+    
+           )
   )
                    ),
   column(3,
@@ -46,6 +60,8 @@ tabItem(
       multiple=F
     ),
     bsTooltip("validat", "Select a method for model and feature selection","left"),
+    textInput("seed","Random Seed",value="123",placeholder = "1234"),
+    bsTooltip("seed", "Set the random seed for benchmark experiment","left"),
     selectizeInput("nrtime",label = "Survival time",choices = NULL,multiple = F,selected = "OS.time"),
     bsTooltip("nrtime", "Select survival time column. Example: OS.time, RFS.time, PFS.time","left"),
     selectizeInput("nrstatus",label = "Survival status",choices = NULL,multiple = F,selected = "OS"),
