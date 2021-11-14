@@ -11,7 +11,7 @@ tabItem(
                           CBioExplorer (Cancer Biomarker Explorer) was developed to facilitate researchers and clinicians to screen, characterize, annotate and translate cancer biomarkers from molecular level to clinical settings more comfortably with graphical user interfaces (GUI). The whole pipeline of CBioExplorer includes data collection, data curation, dimensionality reduction using three methods of WGCNA, univariate Cox proportional hazards regression model, differentially expressed gene analysis, benchmark experiment with 6 machine learning learners (Lasso, Ridge, Elastic net, Glmboost, Coxboost, Randomforest) using cross validation and nested cross validation based on R package mlr, prediction model construction using Cox proportional hazards regression model and nomogram, clinical annotation using a variety of clinical approaches, and biological annotation using over-representation analysis (ORA) and gene set enrichment analysis (GSEA). The overview of CBioExplorer is summarized below:
                           </div>'),
     br(),
-    HTML('<img style="width: 60%; display: block; margin-left: auto; margin-right: auto;" src="overview.jpg"/>'),
+    HTML('<img style="width: 85%; display: block; margin-left: auto; margin-right: auto;" src="overview.png"/>'),
     HTML('<div align="justify">
                           <h3>Notes</h3>
                           <ul>
@@ -56,5 +56,7 @@ tabItem(
     )
   )
 )
+
+
 
 
