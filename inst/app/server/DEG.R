@@ -44,6 +44,7 @@ DEGana <- eventReactive(input$DEGbt,{
 
   clinical[clinical == ""] <- NA
   clinical<-clinical[complete.cases(clinical[,DEGfactor]),]
+
   if(is.numeric(clinical[,DEGfactor])==F){
     clinical[,DEGfactor]<-gsub(' ','',clinical[,DEGfactor])
     clinical[,DEGfactor]<-gsub('-','_',clinical[,DEGfactor])
@@ -52,7 +53,11 @@ DEGana <- eventReactive(input$DEGbt,{
   index <- intersect(names(expres), row.names(clinical))
   clinical <- clinical[index, ]
   expres <- expres[, index]
+
+  expres<-as.data.frame(rmz(expres,per=0.9))
+
   group <- factor(clinical[, DEGfactor])
+
 if(is.numeric(clinical[,DEGfactor])){
   createAlert(
     session,
@@ -86,6 +91,8 @@ if(is.numeric(clinical[,DEGfactor])){
                    expres <- as.matrix(expres)
                    quant <- as.numeric(quantile(expres, c(0., 0.25, 0.5, 0.75, 0.99, 1.0), na.rm = T))
 
+
+
                    val <- (quant[5] > 100) ||
                      (quant[6] - quant[1] > 50 &&
                         quant[2] > 0)
@@ -94,11 +101,13 @@ if(is.numeric(clinical[,DEGfactor])){
                      expres[which(expres <= 0)] <- NaN
                      expres <- log2(expres)
                    }
+
                    expres <- as.data.frame(expres)
                    design <- model.matrix( ~ group + 0, expres)
                    colnames(design) <- levels(group)
                    fit <- lmFit(expres, design)
                    Grp <- levels(group)
+                  
                    if (length(Grp) == 2) {
                      comp <- paste(Grp[1], Grp[2], sep = "-")
                    } else if (length(Grp) > 2) {
@@ -113,7 +122,8 @@ if(is.numeric(clinical[,DEGfactor])){
                    names(DEG) <- c("LogFC", "AveExpr", "t", "PValue", "AdjustedP", "B")
                    res<-list(DEG=DEG, group=group, expres=expres,clinical=clinical)
                  })
-  res
+
+  return(res)
   }
 
 })
@@ -153,7 +163,7 @@ output$downloadDEGtable <- downloadHandler(
 )
 
 
-DEGop <- reactive({
+DEGop <- eventReactive(input$DEGvisbt,{
   input$DEGvisbt
   DEG<-isolate({DEGana()$DEG})
 
@@ -169,7 +179,7 @@ DEGop <- reactive({
   } else{
     sigDEG<-DEG[DEG$AdjustedP<mlgeneselp1 & abs(DEG$LogFC)>mlgeneselogFC1,]
   }
-
+sigDEG<-sigDEG[complete.cases(sigDEG$AveExpr),]
   if(nrow(sigDEG)==0){
     createAlert(
       session,
@@ -212,7 +222,7 @@ output$downloadopgene <- downloadHandler(
 )
 
 
-heatmap<- reactive({
+heatmap<- eventReactive(input$DEGvisbt,{
   input$DEGvisbt
   withProgress(message = "Drawing heatmap",
                                 detail = "This may take a while...",
@@ -225,12 +235,9 @@ heatmap<- reactive({
 
   color <- c()
   level <- levels(group)
-
       htm(
         DEG=DEG,
-
         sigDEG=sigDEG,
-
         group=group,
         color=color,
         DEGscale=isolate({input$DEGscale}),
@@ -259,7 +266,7 @@ heatmap<- reactive({
 })
 
 
-vocanaplt<-reactive({
+vocanaplt<-eventReactive(input$DEGvisbt,{
   input$DEGvisbt
   DEG<-isolate({DEGana()$DEG})
 
@@ -281,7 +288,7 @@ vocanaplt<-reactive({
 })
 
 
-MAplot<-reactive({
+MAplot<-eventReactive(input$DEGvisbt,{
   input$DEGvisbt
 
   DEG<-isolate({DEGana()$DEG})
@@ -304,7 +311,7 @@ MAplot<-reactive({
   })
 })
 
-adjplot<-reactive({
+adjplot<-eventReactive(input$DEGvisbt,{
   input$DEGvisbt
   DEG<-isolate({DEGana()$DEG})
   col<-isolate({input$padjcol})
