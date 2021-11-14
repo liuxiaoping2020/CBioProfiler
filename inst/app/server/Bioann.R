@@ -79,6 +79,7 @@ enrun<-eventReactive(input$enrichbt,{
   names(genean) <- c("geneid", "gene")
   DEGen$gene<-row.names(DEGen)
   DEGen <- merge(genean, DEGen, by = "gene")
+  DEGen<-DEGen[order(DEGen$LogFC,decreasing=T),]
   gene<-DEGen$geneid
   geneList = DEGen$LogFC
   }else if(isolate({input$biomakers})=="Significant SRGs"){
@@ -87,6 +88,7 @@ enrun<-eventReactive(input$enrichbt,{
     names(genean) <- c("geneid", "gene")
     DEGen$gene<-row.names(DEGen)
     DEGen <- merge(genean, DEGen, by = "gene")
+    DEGen<-DEGen[order(DEGen$Coefficient,decreasing =T),]
     gene<-DEGen$geneid
     geneList = DEGen$Coefficient
   }else if(isolate({input$biomakers})=="Network hub genes"){
@@ -95,6 +97,7 @@ enrun<-eventReactive(input$enrichbt,{
     names(genean) <- c("geneid", "gene")
     DEGen$gene<-row.names(DEGen)
     DEGen <- merge(genean, DEGen, by = "gene")
+    DEGen<-DEGen[order(DEGen[,2],decreasing=T),]
     gene<-DEGen$geneid
     geneList = DEGen[,2]
   } else if(isolate({input$biomakers})=="Genes from benchmark experiment"){
@@ -103,6 +106,7 @@ enrun<-eventReactive(input$enrichbt,{
     names(genean) <- c("geneid", "gene")
     DEGen$gene<-row.names(DEGen)
     DEGen <- merge(genean, DEGen, by = "gene")
+    DEGen<-DEGen[order(DEGen$coeff,decreasing=T),]
     gene<-DEGen$geneid
     geneList = DEGen$coeff
   }
@@ -176,6 +180,10 @@ observe({
 
 observeEvent(input$enrichbt, {
   disable("enrichbt")
+})
+
+observeEvent(is.null(enrun()), {
+  enable("enrichbt")
 })
 
 observeEvent(input$enrichbt, {
@@ -452,20 +460,34 @@ output$downloadDEGenplot <- downloadHandler(
           label_format = isolate({input$reglabel_format})
         ))
       } else if (enplottype == 'Geneset enrichment plot1') {
-        print(gseaplot(
-          x = res,
-          geneSetID = isolate({input$gsgeneSetID}),
-          by = isolate({input$gsby}),
-          title = res$Description[gsgeneSetID],
-          color = isolate({input$gscolor}),
-          color.line = isolate({input$gscolor.line}),
-          color.vline = isolate({input$gscolor.vline})
-        ))
+
+        #geneSetID
+          print(gseaplot(
+            x = res,
+            geneSetID = isolate({input$gsgeneSetID1}),
+            by = isolate({input$gsby}),
+            title = res$Description[isolate({input$gsgeneSetID1})],
+            color = isolate({input$gscolor}),
+            color.line = isolate({input$gscolor.line}),
+            color.vline = isolate({input$gscolor.vline})
+          ))
+        # )
+        # print(gseaplot(
+        #   x = res,
+        #   geneSetID = isolate({input$gsgeneSetID}),
+        #   by = isolate({input$gsby}),
+        #   title = res$Description[gsgeneSetID],
+        #   color = isolate({input$gscolor}),
+        #   color.line = isolate({input$gscolor.line}),
+        #   color.vline = isolate({input$gscolor.vline})
+        # ))
+        # print(p)
       } else if (enplottype == 'Geneset enrichment plot2') {
+        geneSetID = isolate({input$gsegeneSetID})
         print(gseaplot2(
           x = res,
-          geneSetID = isolate({input$gsegeneSetID}),
-          title = res$Description[gsegeneSetID],
+          geneSetID = isolate({input$gsegeneSetID2}),
+          title = res$Description[isolate({input$gsegeneSetID2})],
           color = isolate({input$gsecolor}),
           base_size = isolate({input$gsebase_size}),
           rel_heights = c(1.5, 0.5, 1),
@@ -503,6 +525,14 @@ observeEvent(input$page_before_bioan, {
   updateTabItems(session, "tabs", newtab)
   shinyjs::runjs("window.scrollTo(0, 50)")
 })
+
+
+
+
+
+
+
+
 
 
 
