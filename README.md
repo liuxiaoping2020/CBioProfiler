@@ -8,15 +8,15 @@
 
 Open source under GPLV3.0. Both 'CBioExplorer' software and curated cancer gene expression data 'CuratedCancerPrognosisData' are free for academic but ***non-commercial*** use.
 
-## Citation
-
-To be added
-
 ## Important Notes
 
 * Thanks for considering Web CBioExplorer for your study. Due to the limited computing power of the server, when multiple users use CBioExplorer at the same time, the response of the program may become slower, please be patient and only click the button once and wait until one step done.
 * If you plan to use CBioExplorer for high-iterative nested cross validation calculations, we ***strongly recommend that you download the CBioExplorer source code and intall it to your R software for corresponding calculations***. This is caused by the limited computing power of the server. We apologize to you for this.
 * The App will be disconnected from our server after a hour if there is no mouse action on the web browser.
+
+## Citation
+
+To be added
 
 ## Installation
 
@@ -42,6 +42,13 @@ R CMD INSTALL path-to-CuratedCancerPrognosisData/CuratedCancerPrognosisData_1.0.
 
 ```
 devtools::install_github("liuxiaoping2020/CBioExplorer")
+```
+
+**Running CBioExplorer locally**
+
+```
+library(CBioExplorer)
+CBioExplorer()
 ```
 
 If you have any questions regarding the installation and use of the CuratedCancerPrognosisData and CBioExplorer, please feel free to report them at https://github.com/liuxiaoping2020/CBioExplorer/issues, or you can contact the creator and maintainer of the package, Ph.D Liu Xiaoping through liuxiaoping@whu.edu.cn.
