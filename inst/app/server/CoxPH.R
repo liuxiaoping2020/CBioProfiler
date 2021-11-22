@@ -180,6 +180,7 @@ coxPHmodel <- eventReactive(input$CoxPHbt,{
     varname<-isolate({input$coxPHvarname})
     var1 <- strsplit(varname, "|", fixed = T)[[1]]
 
+
     if(length(var1)==length(index)){
       unicox<-unicox[index,]
       multicox<-multicox[index,]
