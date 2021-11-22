@@ -82,7 +82,7 @@ rocrun<-eventReactive(input$pmbt,{
   input$pmbt
   res<-isolate({nestrun()})
   
-  predyear = isolate({input$bmpredictyear})
+predyear = isolate({input$bmpredictyear})
 clinical<-res$clinical
 OS.time<-clinical[,isolate({input$bmtime})]
 OS<-clinical[,isolate({input$bmstatus})]
@@ -373,7 +373,7 @@ coxrun<-eventReactive(input$pmbt,{
   clinfeature<-lapply(clinfeat,fc)
   marker<-"Risk"
 
-  clinical<-res$clinical
+  # clinical<-res$clinical
   OS.time<-clinical[,isolate({input$bmtime})]
   OS<-clinical[,isolate({input$bmstatus})]
   if(is.numeric(OS.time)==F || is.numeric(OS)==F ){
