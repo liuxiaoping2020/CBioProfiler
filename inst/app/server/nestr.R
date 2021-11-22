@@ -124,7 +124,7 @@ observeEvent(input$msurvopbt, {
             "nestrmess",
             "exampleAlert",
             title = "Please note!",
-            style =  "danger",
+            style =  "info",
             content = "Random forest is a machine learning method based on ensemble learning. Its calculation process will consume a lot of time and computing resources, especially when integrated into nested cross validation. Considering the limited computing power of the server, we recommend that users download and install the standalone application of CBioExplorer to perform related calculations locally.",
             append = T,
             dismiss=T
@@ -322,7 +322,6 @@ observeEvent(input$page_after_nestr, {
   updateTabItems(session, "tabs", newtab)
   shinyjs::runjs("window.scrollTo(0, 50)")
 })
-
 
 
 
