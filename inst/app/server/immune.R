@@ -26,7 +26,36 @@ immrun<-eventReactive(input$immunebt,{
                detail = "This may take a while...",
                value = 3,
                {
-  score<-ims(exp=as.matrix(expres),geneset=isolate({input$geneset}))
+  geneset<-isolate({input$geneset})
+  if(geneset=="Bindea"){
+    idx<-intersect(row.names(expres),as.vector(unlist(methodSignatures$Bindea)))
+  }else if(geneset=="Danaher"){
+    idx<-intersect(row.names(expres),as.vector(unlist(methodSignatures$Danaher)))
+  }else if(geneset=="Davoli"){
+    idx<-intersect(row.names(expres),as.vector(unlist(methodSignatures$Davoli)))
+  }else if(geneset=="MCP.Counter"){
+    idx<-intersect(row.names(expres),as.vector(unlist(methodSignatures$MCP.Counter)))
+  }else if(geneset=="xCell"){
+    idx<-intersect(row.names(expres),as.vector(unlist(methodSignatures$xCell)))
+  }
+  # print(idx)
+  if(length(idx)==0){
+    createAlert(
+      session,
+      "immunemess",
+      "exampleAlert",
+      title = "Please note!",
+      style =  "danger",
+      content = paste(
+        "No genes in the reference immune geneset could be matched to the identifiers in the expression data you selected, please Check!!"
+      ),
+      append = T,
+      dismiss=T
+    )
+    return(NULL)
+  }else
+     {
+  score<-ims(exp=as.matrix(expres),geneset=geneset)
   res <-
     plotcor(score = score,
             exp = as.data.frame(expres),
@@ -36,7 +65,7 @@ immrun<-eventReactive(input$immunebt,{
             fdrcutoff=isolate({input$immcutoff}),
             type=isolate({input$immmethod}),
             plottype=isolate({input$immpltype}))
-  })
+
   if(nrow(res$cordata)==0){
     createAlert(
       session,
@@ -59,7 +88,8 @@ immrun<-eventReactive(input$immunebt,{
   }else{
     res
   }
-
+     }
+       })
 })
 
 observe({
@@ -94,9 +124,14 @@ observeEvent(immrun(), {
   enable("immunebt")
 })
 
+observeEvent(is.null(immrun()), {
+  enable("immunebt")
+})
+
+
 observeEvent(input$immunebt, {
   output$immcelltable <-  DT::renderDT({
-    immrun()$score
+    DT::datatable(immrun()$score,options=list(scrollX=TRUE))
   })
 })
 
@@ -112,7 +147,8 @@ output$saveimmcelltable <- downloadHandler(
 
 observeEvent(input$immunebt, {
   output$immcortable <-  DT::renderDT({
-    immrun()$cordata
+    DT::datatable( immrun()$cordata,options=list(scrollX=TRUE))
+   
   })
 })
 
@@ -165,8 +201,6 @@ observeEvent(input$page_after_immune, {
   updateTabItems(session, "tabs", newtab)
   shinyjs::runjs("window.scrollTo(0, 50)")
 })
-
-
 
 
 
