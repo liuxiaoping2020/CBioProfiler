@@ -1,4 +1,3 @@
-
 observe({
   data <- rawdata2()$clinical
   updateSelectizeInput(session,
@@ -94,8 +93,6 @@ predres<-eventReactive(input$Valbt,{
   selvar=res$`Fitted model`$features
   clinical<-data$clinical
   OS.time<-clinical[,isolate({input$Valtime})]
-  
-  print(summary(OS.time))
   
   OS<-clinical[,isolate({input$Valstatus})]
   if(is.numeric(OS.time)==F || is.numeric(OS)==F ){
