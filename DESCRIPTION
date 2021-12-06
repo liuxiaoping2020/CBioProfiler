@@ -13,7 +13,7 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
-Depends: R (>= 3.5.0), shinydashboard, shiny, CuratedCancerPrognosisData, mlr (== 2.18.0)
+Depends: R (>= 3.5.0), shinydashboard, shiny, CuratedCancerPrognosisData
 Imports: shinyBS, table1, survminer, survival, DT, psych,
          survivalROC, tidyverse, WGCNA, ggpubr, limma, colourpicker, ConsensusTME,
          randomForestSRC, shinyjs, enrichplot, rms, TCGAbiolinks, ReactomePA,dynamicTreeCut,ComplexHeatmap,flashClust,
