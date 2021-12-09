@@ -52,7 +52,7 @@ devtools::install_github("liuxiaoping2020/CBioExplorer")
 remotes::install_git("https://gitee.com/liuxiaoping2020/CBioExplorer")
 ```
 
-## Running CBioExplorer locally
+## Running CBioExplorer locally in R
 
 ```
 library(CBioExplorer)
