@@ -40,8 +40,16 @@ R CMD INSTALL path-to-CuratedCancerPrognosisData/CuratedCancerPrognosisData_1.0.
 
 **After you have downloaded and installed "CuratedCancerPrognosisData", you can install "CBioExplorer" via:**
 
+**（1）github:**
+
 ```
 devtools::install_github("liuxiaoping2020/CBioExplorer")
+```
+
+**or (2) gitee:**
+
+```
+remotes::install_git("https://gitee.com/liuxiaoping2020/CBioExplorer")
 ```
 
 ## Running CBioExplorer locally
@@ -50,6 +58,16 @@ devtools::install_github("liuxiaoping2020/CBioExplorer")
 library(CBioExplorer)
 CBioExplorer()
 ```
+
+## Docker image
+
+CBioExplorer has been packaged as a Docker image, users can use CBioExplorer through Docker without any additional configuration. When they finished installing Docker on their personal computer, they can use the following code in the terminal to download and run CBioExplorer Docker image:
+
+```
+docker run -d -p 3838:3838 liuxiaoping2020/cbioexplorer
+```
+
 ## Contact
 
-If you have any questions regarding the installation and use of the CuratedCancerPrognosisData and CBioExplorer, please feel free to report them at https://github.com/liuxiaoping2020/CBioExplorer/issues, or you can contact the creator and maintainer of the package, Ph.D Liu Xiaoping through liuxiaoping@whu.edu.cn.
+If you have any questions regarding the installation and use of the CuratedCancerPrognosisData and CBioExplorer, please feel free to report them at https://github.com/liuxiaoping2020/CBioExplorer/issues, or you can contact the creator and maintainer of the package, Liu Xiaoping through liuxiaoping@whu.edu.cn.
+
