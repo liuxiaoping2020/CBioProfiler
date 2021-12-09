@@ -66,6 +66,7 @@ CBioExplorer has been packaged as a Docker image, users can use CBioExplorer thr
 ```
 docker run -d -p 3838:3838 liuxiaoping2020/cbioexplorer
 ```
+The Docker image for CBioExplorer can be found at https://hub.docker.com/r/liuxiaoping2020/cbioexplorer/tags
 
 ## Contact
 
