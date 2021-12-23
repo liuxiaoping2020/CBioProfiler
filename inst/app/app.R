@@ -7904,10 +7904,10 @@ server <- function(input, output, session) {
     if(isolate({input$msurvsel})=="P value"){
       sigres<-res[res$PValue<isolate({input$msurvp}),]
     } else{
-      sigres<-res[res$PValue<isolate({input$msurvap}),]
+      sigres<-res[res$P.adjusted<isolate({input$msurvap}),]
     }
     
-    sigres$P.adjusted<-NULL
+    #sigres$P.adjusted<-NULL
     
     if(nrow(sigres)==0){
       createAlert(
