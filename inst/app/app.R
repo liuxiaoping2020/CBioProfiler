@@ -26,6 +26,7 @@ suppressPackageStartupMessages({
   library(Biobase)
   library(CuratedCancerPrognosisData)
   library("ggplotify")
+  library(ConsensusTME)
 })
 sumz<-function(x){
   p<-sum(na.omit(x)==0)/length(x)
