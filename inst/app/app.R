@@ -129,7 +129,7 @@ plotcor<-function(score,exp,gene,select,normmethod,fdrcutoff, type,plottype){
   list(cordata=res,corplot=correplot,score=score)
 }
 
-
+ 
 nomo<-function(train,time,status,variable,varlabels,yearpoint){
   train<-train[complete.cases(train[,time]) & train[,time]>0,]
   if(max(train[,time])>600){
