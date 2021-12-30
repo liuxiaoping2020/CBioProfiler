@@ -2893,7 +2893,7 @@ body <-  dashboardBody(
                      # )
               ),
               column(3,
-                     box(width = NULL,status = "danger", solidHeader=T,title = "Input discovery data",
+                     box(width = NULL,status = "danger", solidHeader=T,title = "Input discovery set",
                          selectInput("inputType", "Dataset type",
                                      choices = c("Public dataset", "Customized dataset"),
                                      selected = "Public dataset"),
