@@ -2748,7 +2748,7 @@ sidebar <-  dashboardSidebar(
                         color: #909CFF"),
     
     menuSubItem("Dataset source", href = "https://liuxiaoping2020.github.io/CBioExplorerDatasource/",icon=icon("external-link")),
-    menuSubItem("CBioExplorer standalone app", href = "https://liuxiaoping2020.github.io/CBioExplorer_reference/",icon=icon("external-link")),
+    menuSubItem("CBioExplorer standalone app", href = "https://gitee.com/liuxiaoping2020/CBioExplorer",icon=icon("external-link")),
     menuSubItem("R package reference", href = "https://liuxiaoping2020.github.io/CBioExplorer_reference/",icon=icon("external-link")),
     
     tags$div("Tutorial",
@@ -2760,23 +2760,56 @@ sidebar <-  dashboardSidebar(
                         color: deepskyblue"),
     
     menuSubItem("Tutorial" , href = "https://github.com/liuxiaoping2020/CBioExplorer_tutorial/blob/main/CBioExplorer_tutorial.pdf", icon = icon("book")),
-    tags$div("Contact",
-             style= "margin-top: 6px;
+    
+  tags$div("Contact",
+               style= "margin-top: 6px;
                            font-size: 1.5em;
                            padding: 0 1.25em;
                            text-align: center;
                            background: rgba(255, 255, 255, 0);
                           color: lightgreen"),
-    tags$div("First author: Xiao-Ping Liu",
-             style= "margin-top: 6px;
+      tags$div("Xing-Huan Wang",
+               style= "margin-top: 6px;
                            font-size: 1em;
                            padding: 0 1.25em;
                            text-align: left;
                            background: rgba(255, 255, 255, 0);
                           color: white"),
-    
-    tags$div("Email: liuxiaoping@whu.edu.cn",
-             style= "margin-top: 6px;
+
+      tags$div("Email: wangxinghuan@whu.edu.cn",
+               style= "margin-top: 6px;
+                           font-size: 1em;
+                           padding: 0 1.25em;
+                           text-align: left;
+                           background: rgba(255, 255, 255, 0);
+                          color: white"),
+      br(),
+ tags$div("Sheng Li",
+               style= "margin-top: 6px;
+                           font-size: 1em;
+                           padding: 0 1.25em;
+                           text-align: left;
+                           background: rgba(255, 255, 255, 0);
+                          color: white"),
+
+      tags$div("Email: lisheng-znyy@whu.edu.cn",
+               style= "margin-top: 6px;
+                           font-size: 1em;
+                           padding: 0 1.25em;
+                           text-align: left;
+                           background: rgba(255, 255, 255, 0);
+                          color: white"),
+br(),
+      tags$div("Xiao-Ping Liu",
+               style= "margin-top: 6px;
+                           font-size: 1em;
+                           padding: 0 1.25em;
+                           text-align: left;
+                           background: rgba(255, 255, 255, 0);
+                          color: white"),
+
+      tags$div("Email: liuxiaoping@whu.edu.cn",
+               style= "margin-top: 6px;
                            font-size: 1em;
                            padding: 0 1.25em;
                            text-align: left;
