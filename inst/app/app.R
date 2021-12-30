@@ -6804,7 +6804,7 @@ server <- function(input, output, session) {
       multicox$summaryy<-paste(multicox$HR,paste("(",multicox$LCI,"-",paste(paste(multicox$UCI,",",sep=""),multicox$Pvalue,sep=" "),")",sep=""),sep=" ")
       
       tab<-merge(unicox,multicox,by=0)
-      rownames(tab)<-row.names(multicox)
+      rownames(tab)<-tab$Row.names
       
       tablecox<-subset(tab,select=c(summaryx,summaryy))
       names(tablecox)<-c("Univariate HR(95% CI,Pvalue)","Multivariable HR(95% CI,Pvalue)")
