@@ -2580,7 +2580,7 @@ cox<-function(data,time,status,feature,maxtick,varname,legend.pos){
   
   tab<-merge(unicox,multicox,by=0)
   
-  rownames(tab)<-row.names(multicox)
+  rownames(tab)<-tab$Row.names
   
   tablecox<-subset(tab,select=c(summaryx,summaryy))
   names(tablecox)<-c("Univariate HR(95% CI,Pvalue)","Multivariable HR(95% CI,Pvalue)")
