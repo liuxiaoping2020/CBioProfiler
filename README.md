@@ -61,12 +61,7 @@ CBioExplorer()
 
 ## Docker image
 
-CBioExplorer has been packaged as a Docker image, users can use CBioExplorer through Docker without any additional configuration. When they finished installing Docker on their personal computer, they can use the following code in the terminal to download and run CBioExplorer Docker image:
-
-```
-docker run -d -p 3838:3838 liuxiaoping2020/cbioexplorer
-```
-The Docker image for CBioExplorer can be found at https://hub.docker.com/r/liuxiaoping2020/cbioexplorer/tags
+CBioExplorer has been packaged as a Docker image, users can use CBioExplorer through Docker without any additional configuration. When they finished installing Docker on their personal computer. The Docker image for CBioExplorer can be found at https://hub.docker.com/r/liuxiaoping2020/cbioexplorer/tags
 
 ## Contact
 
