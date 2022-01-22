@@ -16,7 +16,18 @@ Open source under GPLV3.0. Both 'CBioExplorer' software and curated cancer gene 
 
 ## Citation
 
-To be added
+@article {Liu2022.01.17.22269448,
+	author = {Liu, Xiao-Ping and Shi, Hongjie and Li, Sheng and Wang, Xing-Huan},
+	title = {CBioExplorer: a web and standalone application for screening, validation, and annotation of cancer survival related biomarkers from molecular level to clinical settings},
+	elocation-id = {2022.01.17.22269448},
+	year = {2022},
+	doi = {10.1101/2022.01.17.22269448},
+	publisher = {Cold Spring Harbor Laboratory Press},	
+	URL = {https://www.medrxiv.org/content/early/2022/01/18/2022.01.17.22269448},
+	eprint = {https://www.medrxiv.org/content/early/2022/01/18/2022.01.17.22269448.full.pdf},
+	journal = {medRxiv}
+}
+
 
 ## Installation
 
