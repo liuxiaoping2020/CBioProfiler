@@ -1,0 +1,55 @@
+
+
+
+<div class="panel panel-info">
+<div class="panel-heading text-center panel-relative">
+<div class="panel-heading">
+Descriptions and parameter settings
+</div>
+</div>
+<div class="panel-body">
+<p>Immune cell infiltration, as an important component of the tumor microenvironment, exerts an important influence on the occurrence, development and outcome of tumors <span class="citation">(Thorsson et al. 2018)</span>. CBioExplorer applies the R package ConsensusTME <span class="citation">(Jiménez-Sánchez, Cast, and Miller 2019)</span> which uses a consensus approach to estimate enrichment scores for multiple immune cells found within the tumor microenvironment using ssGSEA <span class="citation">(Hänzelmann, Castelo, and Guinney 2013)</span>.CBioExplorer calculates enrichment score of immune cell types based on gene signatures from Bindea and colleagues <span class="citation">(Bindea et al. 2013)</span>, Danaher and colleagues <span class="citation">(Danaher et al. 2017)</span>, and Davoli and colleagues <span class="citation">(Davoli et al. 2017)</span>, xCell<span class="citation">(Aran, Hu, and Butte 2017)</span>, MCP-counter <span class="citation">(Becht et al. 2016)</span>. Figure 34 shows the correlation between TP53 and immune cell infiltration.</p>
+<p>Parameters:</p>
+<ul>
+<li><p><strong>Biomarkers:</strong> Specify the source of biomarkers. ‘Significant DEGs’ means significantly differential experssion genes at the cutoff you specified in the ‘Differentially expressed genes’ module; ‘Significant SRGs’ means significant survival-related genes at the cutoff you specified in the ‘Survival related genes’ module; ‘Network hub genes’ means genes in one or all non-grey modules you selected in the ‘WGCNA’ module; ‘Genes from benchmark experiment’ means genes derived from benchmark experiment based on cross-validation or nested cross-validation.</p></li>
+<li><p><strong>Functional analysis</strong> Define the functional enrichment analysis methods,GO, gene ontology analysis; KEGG, Kyoto Encyclopedia of Genes and Genomes analysis; MsigDb, Molecular Signatures Database analysis; Reactome Pathway, Reactome Pathway analysis.</p></li>
+<li><p><strong>GO categories:</strong> Define the subcategory of gene ontology.BP, biological process; CC, cellular component;MF, molecular function; ‘All’ means performing functional GO analysis based on the all three subcategories.</p></li>
+<li><p><strong>Functional analysis method:</strong> Define the method for functional enrichment analysis, “ORA” means over representation analysis, “GSEA” means gene set enrichment analysis.</p></li>
+<li><p><strong>GSEA algorithm:</strong> Specify the GSEA method.</p></li>
+<li><p><strong>Maximal size of genes:</strong> Maximal size of genes annotated by functional term for testing.</p></li>
+<li><p><strong>P value Cutoff:</strong> Adjusted pvalue cutoff on enrichment tests to report.</p></li>
+<li><p><strong>P Adjust Method:</strong> Adjusting method for P.</p></li>
+<li><p><strong>q value Cutoff:</strong> Cutoff value for q.</p></li>
+<li><p><strong>Plot type:</strong> visualization method for enrichment result. <font color="red"> Please note! Only ‘Dot plot,’ ‘Gene-concept network,’ ‘Enrichment Map’ are suitable for visualizing the results of ORA analysis, while only ‘Dot plot,’ ‘Gene-concept network,’ ‘Heatmap,’ ‘Enrichment Map,’ ‘Ridgeline plot,’ ‘Geneset enrichment plot1,’ ’Geneset enrichment plot2 are suitable for visualizing the result of GSEA</font>.</p></li>
+</ul>
+</div>
+</div>
+<div id="reference" class="section level4 unnumbered">
+<h4 class="unnumbered">Reference</h4>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-aran_xcell:_2017" class="csl-entry">
+Aran, Dvir, Zicheng Hu, and Atul J. Butte. 2017. <span>“<span class="nocase">xCell</span>: Digitally Portraying the Tissue Cellular Heterogeneity Landscape.”</span> <em>Genome Biology</em> 18 (1): 220. <a href="https://doi.org/10.1186/s13059-017-1349-1">https://doi.org/10.1186/s13059-017-1349-1</a>.
+</div>
+<div id="ref-becht_estimating_2016" class="csl-entry">
+Becht, Etienne, Nicolas A. Giraldo, Laetitia Lacroix, Bénédicte Buttard, Nabila Elarouci, Florent Petitprez, Janick Selves, et al. 2016. <span>“Estimating the Population Abundance of Tissue-Infiltrating Immune and Stromal Cell Populations Using Gene Expression.”</span> <em>Genome Biology</em> 17 (1): 218. <a href="https://doi.org/10.1186/s13059-016-1070-5">https://doi.org/10.1186/s13059-016-1070-5</a>.
+</div>
+<div id="ref-bindea_spatiotemporal_2013" class="csl-entry">
+Bindea, Gabriela, Bernhard Mlecnik, Marie Tosolini, Amos Kirilovsky, Maximilian Waldner, Anna C. Obenauf, Helen Angell, et al. 2013. <span>“Spatiotemporal <span>Dynamics</span> of <span>Intratumoral</span> <span>Immune</span> <span>Cells</span> <span>Reveal</span> the <span>Immune</span> <span>Landscape</span> in <span>Human</span> <span>Cancer</span>.”</span> <em>Immunity</em> 39 (4): 782–95. <a href="https://doi.org/10.1016/j.immuni.2013.10.003">https://doi.org/10.1016/j.immuni.2013.10.003</a>.
+</div>
+<div id="ref-danaher_gene_2017" class="csl-entry">
+Danaher, Patrick, Sarah Warren, Lucas Dennis, Leonard D’Amico, Andrew White, Mary L. Disis, Melissa A. Geller, Kunle Odunsi, Joseph Beechem, and Steven P. Fling. 2017. <span>“Gene Expression Markers of <span>Tumor</span> <span>Infiltrating</span> <span>Leukocytes</span>.”</span> <em>Journal for ImmunoTherapy of Cancer</em> 5 (1): 18. <a href="https://doi.org/10.1186/s40425-017-0215-8">https://doi.org/10.1186/s40425-017-0215-8</a>.
+</div>
+<div id="ref-davoli_tumor_2017" class="csl-entry">
+Davoli, Teresa, Hajime Uno, Eric C. Wooten, and Stephen J. Elledge. 2017. <span>“Tumor Aneuploidy Correlates with Markers of Immune Evasion and with Reduced Response to Immunotherapy.”</span> <em>Science</em> 355 (6322): eaaf8399. <a href="https://doi.org/10.1126/science.aaf8399">https://doi.org/10.1126/science.aaf8399</a>.
+</div>
+<div id="ref-hanzelmann_gsva:_2013" class="csl-entry">
+Hänzelmann, Sonja, Robert Castelo, and Justin Guinney. 2013. <span>“<span>GSVA</span>: Gene Set Variation Analysis for Microarray and <span>RNA</span>-<span>Seq</span> Data.”</span> <em>BMC Bioinformatics</em> 14 (1): 7. <a href="https://doi.org/10.1186/1471-2105-14-7">https://doi.org/10.1186/1471-2105-14-7</a>.
+</div>
+<div id="ref-jimenez-sanchez_comprehensive_2019" class="csl-entry">
+Jiménez-Sánchez, Alejandro, Oliver Cast, and Martin L. Miller. 2019. <span>“Comprehensive <span>Benchmarking</span> and <span>Integration</span> of <span>Tumor</span> <span>Microenvironment</span> <span>Cell</span> <span>Estimation</span> <span>Methods</span>.”</span> <em>Cancer Research</em> 79 (24): 6238–46. <a href="https://doi.org/10.1158/0008-5472.CAN-18-3560">https://doi.org/10.1158/0008-5472.CAN-18-3560</a>.
+</div>
+<div id="ref-thorsson_immune_2018" class="csl-entry">
+Thorsson, Vésteinn, David L. Gibbs, Scott D. Brown, Denise Wolf, Dante S. Bortone, Tai-Hsien Ou Yang, Eduard Porta-Pardo, et al. 2018. <span>“The <span>Immune</span> <span>Landscape</span> of <span>Cancer</span>.”</span> <em>Immunity</em> 48 (4): 812–830.e14. <a href="https://doi.org/10.1016/j.immuni.2018.03.023">https://doi.org/10.1016/j.immuni.2018.03.023</a>.
+</div>
+</div>
+</div>

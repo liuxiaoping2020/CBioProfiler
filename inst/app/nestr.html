@@ -1,0 +1,40 @@
+
+
+
+<div class="panel panel-info">
+<div class="panel-heading text-center panel-relative">
+<div class="panel-heading">
+Descriptions and parameter settings
+</div>
+</div>
+<div class="panel-body">
+<p>For the <strong>Benchmark experiment</strong>, CBioExplorer includes 6 machine learning algorithms (<strong>LASSO</strong>, <strong>Ridge</strong>, <strong>ElasticNet</strong>, <strong>Glmboost</strong>, <strong>Coxboost</strong>, <strong>RandomForestSRC</strong>) for survival analysis and applies cross validation (CV) and nested cross validation (nCV) to train and validate the above survival models. The Benchmark experiment is supported by the R package ‘mlr’ <span class="citation">(Bischl et al. 2020)</span>.</p>
+<p>During CV, the whole <strong>Data set</strong> is randomly split (If the users desired to split the whole dataset) into <strong>Training set</strong> and <strong>Test set</strong>, then k-fold CV is applied to the training set: (1) Divide the <strong>Training set</strong> into equal K folds; (2) Use the first fold as inner test set, and the rest as inner training set. (3) Train the model and calculate the C-index of the model on the inner test set; (4) Use a different fold as inner test set each time, and repeat steps (2) and (3) K times. (5) Apply the best model to <strong>Test set</strong> and external independent validation cohort.</p>
+<p>During nested-CV (nCV), the whole data set is divided into n outer folds, and then each outer fold is divided into <strong>Training set</strong> and <strong>Test set</strong>. The workflow of nCV: (1) Divide the <strong>Training set</strong> into equal K folds; (2) Use the first fold as inner test set, and the rest as inner training set. (3) Train the model and calculate the C-index of the model on the inner test set; (4) Use a different fold as inner test set each time, and repeat steps (2) and (3) K times. (5) Apply the best model to outer fold <strong>Test set</strong>. (6) Select the best outer model features and parameters and train on the whole data set to get final model. (7) If the users have divided the whole data set into two parts, one is for training nCV, the other is for validation, then they can validate the final model on the validation part and external validation cohort, otherwise, they can validate the final model on external cohort.</p>
+<p>The users can select one or more survival learners (<strong>LASSO</strong>, <strong>Ridge</strong>,<strong>ElasticNet</strong>, <strong>Glmboost</strong>, <strong>Coxboost</strong>, <strong>RandomForestSRC</strong>) to conduct benchmark experiment using CV or nCV. For CV the users can perform bootstrap resampling on the test set to compare the performance of the survival learners they selected. For nCV, they can use the performance of each outer fold to compare the survival learners they selected. Figure 17 shows C-index comparison of survival models based on benchmark experiment.</p>
+<p>Parameters:</p>
+<ul>
+<li><p><strong>Learner:</strong> Specify the survival learner for benchmark experiment.</p></li>
+<li><p><strong>Method:</strong> Specify the method for benchmark experiment: Cross validation or nested cross validation.</p></li>
+<li><p><strong>Random Seed</strong> Set the random seed for benchmark experiment.</p></li>
+<li><p><strong>Survival time:</strong> Select survival time column. Example: “OS.time,” “RFS.time,” “PFS.time,” etc.</p></li>
+<li><p><strong>Survival status:</strong> Select survival time column. Example: “OS,” “RFS,” “PFS,” etc.</p></li>
+<li><p><strong>Optimization algorithm:</strong> Choose an optimization algorithm to search an appropriate set of parameters from a given search space for given learners.</p></li>
+<li><p><strong>Resolution:</strong> Resolution of the grid for each numeric/integer parameter in par.set. For vector parameters, it is the resolution per dimension. Either pass one resolution for all parameters, or a named vector. Default is 10.</p></li>
+<li><p><strong>Maxit:</strong> Number of iterations for random search. Default is 100.</p></li>
+<li><p><strong>Inner fold:</strong> Set the fold number for inner K-fold cross-validation.</p></li>
+<li><p><strong>Outer fold:</strong> Set the fold number for outer K-fold cross-validation.</p></li>
+<li><p><strong>Bootstrap iterations:</strong> Set the iteration for bootstrap validation.</p></li>
+<li><p><strong>Split the dataset ?:</strong> Whether split the whole dataset into internal training and test set based on stratified sampling.</p></li>
+<li><p><strong>Split ratio:</strong> The percentage of samples that goes to training.</p></li>
+</ul>
+</div>
+</div>
+<div id="reference" class="section level4 unnumbered">
+<h4 class="unnumbered">Reference</h4>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-mlr" class="csl-entry">
+Bischl, Bernd, Michel Lang, Lars Kotthoff, Patrick Schratz, Julia Schiffner, Jakob Richter, Zachary Jones, Giuseppe Casalicchio, and Mason Gallo. 2020. <em>Mlr: Machine Learning in r</em>. <a href="https://CRAN.R-project.org/package=mlr">https://CRAN.R-project.org/package=mlr</a>.
+</div>
+</div>
+</div>
