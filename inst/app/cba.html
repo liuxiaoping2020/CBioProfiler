@@ -1,0 +1,28 @@
+
+
+
+<div class="panel panel-info">
+<div class="panel-heading text-center panel-relative">
+<div class="panel-heading">
+Descriptions and parameter settings
+</div>
+</div>
+<div class="panel-body">
+<p>Before performing subtype analysis, we usually need to preprocess the data. CBioProfiler integrates four methods provided by the CancerSubtype<span class="citation">(Xu et al. 2017)</span> package for data preprocessing (Variance, Median Absolute Deviation(MAD), Cox model (CoxPH), Principal Component Analysis (PCA)).</p>
+<p>Parameters:</p>
+<ul>
+<li><p><strong>Survival time:</strong> Select survival time column. Example: “OS.time,” “RFS.time,” “PFS.time,” etc.</p></li>
+<li><p><strong>Survival status:</strong> Select survival time column. Example: “OS,” “RFS,” “PFS,” etc.</p></li>
+<li><p><strong>Feature selection method:</strong> Specify the feature selection method, “Variance,” “MAD,” “PCA,” and “CoxPH” refer to “Variance,” “Median Absolute Deviation”(MAD)“,”Cox model“, and”Principal Component Analysis&quot;, respectively.</p></li>
+<li><p><strong>Cut method:</strong> A character value representing the selection type. “TopK” represents performing variable selection based on a specific number of genes. “Cutoff” performing variable selection based on specific thresholds.</p></li>
+</ul>
+</div>
+</div>
+<div id="reference" class="section level4 unnumbered">
+<h4 class="unnumbered">Reference</h4>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-xu_cancersubtypes:_2017" class="csl-entry">
+Xu, Taosheng, Thuc Duy Le, Lin Liu, Ning Su, Rujing Wang, Bingyu Sun, Antonio Colaprico, Gianluca Bontempi, and Jiuyong Li. 2017. <span>“<span>CancerSubtypes</span>: An <span>R</span>/<span>Bioconductor</span> Package for Molecular Cancer Subtype Identification, Validation and Visualization.”</span> Edited by Inanc Birol. <em>Bioinformatics</em> 33 (19): 3131–33. <a href="https://doi.org/10.1093/bioinformatics/btx378">https://doi.org/10.1093/bioinformatics/btx378</a>.
+</div>
+</div>
+</div>
