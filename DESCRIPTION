@@ -17,5 +17,5 @@ Depends: R (>= 3.5.0), shinydashboard, shiny, CuratedCancerPrognosisData, mlr (=
 Imports: shinyBS, table1, survminer, survival, DT, psych,M3C,estimate,ConsensusClusterPlus,
          survivalROC, tidyverse, WGCNA, ggpubr, limma, colourpicker, ConsensusTME,
          randomForestSRC, shinyjs, enrichplot, rms, TCGAbiolinks, ReactomePA,dynamicTreeCut,ComplexHeatmap,flashClust,
-         clusterProfiler, msigdbr, caret, Biobase,ggstance,mboost,CoxBoost,glmnet,impute,preprocessCore,org.Hs.eg.db
+         clusterProfiler, msigdbr, caret, Biobase,ggstance,mboost,CoxBoost,glmnet,impute,preprocessCore,org.Hs.eg.db, M3C,ConsensusClusterPlus, meta
 
