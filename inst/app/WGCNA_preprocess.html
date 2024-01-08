@@ -1,0 +1,30 @@
+
+
+
+<div class="panel panel-info">
+<div class="panel-heading text-center panel-relative">
+<div class="panel-heading">
+Descriptions and parameter settings
+</div>
+</div>
+<div class="panel-body">
+<p>For <strong>Data preprocessing</strong>, CBioProfiler uses sample network methods for finding outlying samples, specifically, the Euclidean distance based sample network is simply the canonical Euclidean distance based network.</p>
+<p>In the main window, users can determine which samples are outliers based on the sample dendrogram and trait heatmap.</p>
+<p>Parameters:</p>
+<ul>
+<li><p><strong>Most variable genes to include:</strong> Whether select top n variable genes to be included for network construction based on the variances of genes cross all samples.</p></li>
+<li><p><strong>Z.K:</strong> Cutoff in sample network for outlier detection, please refer to <span class="citation">(Horvath 2011)</span> for more details.</p></li>
+<li><p><strong>Numeric clinical variable:</strong> Select <strong><em>2 or more numeric</em></strong> clinical variables to be included for correlation analysis. <font color="red"><strong>Please note that the clinical trait should be numeric value, if users want to identify the correlation between modules and categorical clinical traits, then the user can transform the categorical clinical trait to dummy variables</strong></font></p></li>
+<li><p><strong>Heatmap Width (%):</strong> Set the width of the heatmap.</p></li>
+<li><p><strong>Heatmap Height (px):</strong> Set the height of the heatmap.</p></li>
+</ul>
+</div>
+</div>
+<div id="reference" class="section level4 unnumbered">
+<h4 class="unnumbered">Reference</h4>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-horvath_weighted_2011" class="csl-entry">
+Horvath, Steve. 2011. <em>Weighted Network Analysis</em>. New York, NY: Springer New York. <a href="https://doi.org/10.1007/978-1-4419-8819-5">https://doi.org/10.1007/978-1-4419-8819-5</a>.
+</div>
+</div>
+</div>

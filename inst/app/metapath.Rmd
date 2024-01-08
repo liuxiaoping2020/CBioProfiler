@@ -1,0 +1,28 @@
+---
+bibliography: book.bib
+output: html_fragment
+---
+
+
+
+<div class="panel panel-info">
+<div class='panel-heading text-center panel-relative'>
+<div class="panel-heading">Descriptions and parameter settings </div>
+
+</div>
+
+<div class="panel-body">
+
+Tumor initiation and progression depend on cellular metabolism. A common feature of tumor cell metabolism is the ability to obtain essential nutrients from a nutrient-poor environment and use these nutrients to maintain viability and generate new biomass. Alterations in intracellular and extracellular metabolites can have profound effects on gene expression, cell differentiation, and the tumor microenvironment along with tumor-associated metabolic reprogramming. There are six main characteristics of changes in tumor metabolism, but only a few tumors exhibit these six characteristics at the same time. According to the specific characteristics exhibited by tumors, it may help to better guide tumor classification and treatment. Ricketts et al.[@ricketts_cancer_2018] curated common tumor metabolic pathways, including, AMPK Complex, Complex I, Complex III, Complex IV - cytochrome C, Complex V, Fatty Acid Synthesis, Glycogen Metabolism, Glycolysis, Krebs Cycle - Cyto, Krebs Cycle - Mito, NADH->NADPH, PDC Activation, PDC Suppression, Ribose Sugar Metabolism, and Serine Metabolism. In the present study, CBioProfiler helps the users to characterize the relationship between the biomarker they selected and the common metabolic pathways based on ssGSEA algorithm [@hanzelmann_gsva:_2013]. 
+
+Parameters:
+
+* **Official gene symbol:** Input one gene (biomarker candidate) with official gene symbol that you want to analyze the correlation between the gene and metabolism pathways.
+
+* **Correlation method:** Specify the correlation methods. "pearson" means Pearson's Correlation, "spearman" means Spearman's Correlation. 
+
+
+</div>
+</div>
+
+#### Reference

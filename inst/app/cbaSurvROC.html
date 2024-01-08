@@ -1,0 +1,29 @@
+
+
+
+<div class="panel panel-info">
+<div class="panel-heading text-center panel-relative">
+<div class="panel-heading">
+Descriptions and parameter settings
+</div>
+</div>
+<div class="panel-body">
+<p>Time-dependent ROC (survival ROC) analysis <span class="citation">(Heagerty and Paramita Saha-Chaudhuri 2013)</span> helps the users investigate the accuracy of the survival prediction of the cancer subtype.</p>
+<p>Parameters:</p>
+<ul>
+<li><p><strong>Select the cohort:</strong> Select the cohort that will be used for analysis.</p></li>
+<li><p><strong>Survival time:</strong> Select survival time column. Example: “OS.time,” “RFS.time,” “PFS.time,” etc.</p></li>
+<li><p><strong>Survival status:</strong> Select survival status column. Example: “OS,” “RFS,” “PFS,” etc.</p></li>
+<li><p><strong>Prediction years:</strong> Define the time points in years you want to predict based on time dependent ROC analysis. the longest time point should not the max of survival (relapse/disease free) duration.</p></li>
+<li><p><strong>Method for survival ROC:</strong> Define the method for survival ROC analysis, the default is “NNE.”</p></li>
+</ul>
+</div>
+</div>
+<div id="reference" class="section level4 unnumbered">
+<h4 class="unnumbered">Reference</h4>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-survivalROC" class="csl-entry">
+Heagerty, Patrick J., and packaging by Paramita Saha-Chaudhuri. 2013. <em>survivalROC: Time-Dependent ROC Curve Estimation from Censored Survival Data</em>. <a href="https://CRAN.R-project.org/package=survivalROC">https://CRAN.R-project.org/package=survivalROC</a>.
+</div>
+</div>
+</div>

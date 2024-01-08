@@ -1,0 +1,54 @@
+
+
+
+<div class="panel panel-info">
+<div class="panel-heading text-center panel-relative">
+<div class="panel-heading">
+Descriptions and parameter settings
+</div>
+</div>
+<div class="panel-body">
+<p>As mentioned above, CBioProfiler integrates multiple unsupervised machine learning methods (K-means clustering <span class="citation">(Hartigan and Wong 1979)</span>, hierarchical clustering <span class="citation">(Maimon and Rokach 2005)</span>, partitioning around medoids (PAM) clustering <span class="citation">(Van der Laan, Pollard, and Bryan 2003)</span>, etc.) using two popular consensus clustering methods (ConsensusClusterPlus <span class="citation">(Wilkerson and Hayes 2010)</span> and M3C <span class="citation">(John et al. 2020)</span>). Based on this, CBioProfiler can assist users to classify tumor patients into different subtypes, and perform evaluation, validation, and biological and clinical annotation of these subtypes.</p>
+<p>Parameters:</p>
+<ul>
+<li><p><strong>Clustering strategy:</strong> Specify the clustering strategy, “Monti consensus clustering” and “M3C” refer to ConsensusClusterPlus <span class="citation">(Wilkerson and Hayes 2010)</span> and M3C <span class="citation">(John et al. 2020)</span>, respectively.</p></li>
+<li><p><strong>Cluster algorithm:</strong> Specify the cluster method. “hc” represents hierarchical clustering, “pam” represents partitioning around medoids and “km” represents K-means.</p></li>
+<li><p><strong>Random seed:</strong> Specify the random seed.</p></li>
+<li><p><strong>Max K:</strong> Integer value. maximum cluster number to evaluate.</p></li>
+<li><p><strong>pItem:</strong> Numerical value. proportion of items to sample.</p></li>
+<li><p><strong>Number of subsamples:</strong> Integer value. number of subsamples.</p></li>
+<li><p><strong>Distance:</strong> Character value. ‘pearson’: (1 - Pearson correlation), ‘spearman’ (1 - Spearman correlation), ‘euclidean,’ ‘binary,’ ‘maximum,’ ‘canberra,’ and ’minkowski&quot;.</p></li>
+<li><p><strong>pFeature:</strong> Numerical value. proportion of features to sample.</p></li>
+<li><p><strong>Correlation use:</strong> Specifies how to handle missing data in correlation distances ‘everything,’‘pairwise.complete.obs,’ ‘complete.obs’ see cor() for description.</p></li>
+<li><p><strong>iteration:</strong> Numerical value: how many Monte Carlo iterations to perform (default: 25, recommended: 5-100).</p></li>
+<li><p><strong>Reference method:</strong> Character string: refers to which reference method to use.</p></li>
+<li><p><strong>Reference resamples:</strong> Numerical value: how many resampling reps to use for reference (default: 100, recommended: 100-250).</p></li>
+<li><p><strong>Pacx1:</strong> Numerical value: The 1st x co-ordinate for calculating the pac score from the CDF (default: 0.1).</p></li>
+<li><p><strong>Pacx2:</strong> Numerical value: The 2nd x co-ordinate for calculating the pac score from the CDF (default: 0.1).</p></li>
+<li><p><strong>Objective function:</strong> Character string: whether to use ‘PAC’ or ‘entropy’ objective function (default = entropy).</p></li>
+<li><p><strong>Simulation method:</strong> 1 refers to the Monte Carlo simulation method, 2 to regularized consensus clustering.</p></li>
+<li><p><strong>Tune lambda ?:</strong> Logical flag: whether to tune lambda or not.</p></li>
+<li><p><strong>Default lambda value:</strong> Numerical value: if not tuning fixes the default (default: 0.1).</p></li>
+</ul>
+</div>
+</div>
+<div id="reference" class="section level4 unnumbered">
+<h4 class="unnumbered">Reference</h4>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-hartigan_algorithm_1979" class="csl-entry">
+Hartigan, J. A., and M. A. Wong. 1979. <span>“Algorithm <span>AS</span> 136: <span>A</span> <span>K</span>-<span>Means</span> <span>Clustering</span> <span>Algorithm</span>.”</span> <em>Applied Statistics</em> 28 (1): 100. <a href="https://doi.org/10.2307/2346830">https://doi.org/10.2307/2346830</a>.
+</div>
+<div id="ref-john_m3c:_2020" class="csl-entry">
+John, Christopher R., David Watson, Dominic Russ, Katriona Goldmann, Michael Ehrenstein, Costantino Pitzalis, Myles Lewis, and Michael Barnes. 2020. <span>“<span>M3c</span>: <span>Monte</span> <span>Carlo</span> Reference-Based Consensus Clustering.”</span> <em>Scientific Reports</em> 10 (1): 1816. <a href="https://doi.org/10.1038/s41598-020-58766-1">https://doi.org/10.1038/s41598-020-58766-1</a>.
+</div>
+<div id="ref-maimon_data_2005" class="csl-entry">
+Maimon, Oded, and Lior Rokach, eds. 2005. <em>Data Mining and Knowledge Discovery Handbook</em>. New York: Springer.
+</div>
+<div id="ref-van_der_laan_new_2003" class="csl-entry">
+Van der Laan, Mark, Katherine Pollard, and Jennifer Bryan. 2003. <span>“A New Partitioning Around Medoids Algorithm.”</span> <em>Journal of Statistical Computation and Simulation</em> 73 (8): 575–84. <a href="https://doi.org/10.1080/0094965031000136012">https://doi.org/10.1080/0094965031000136012</a>.
+</div>
+<div id="ref-wilkerson_consensusclusterplus:_2010" class="csl-entry">
+Wilkerson, Matthew D., and D. Neil Hayes. 2010. <span>“<span>ConsensusClusterPlus</span>: A Class Discovery Tool with Confidence Assessments and Item Tracking.”</span> <em>Bioinformatics</em> 26 (12): 1572–73. <a href="https://doi.org/10.1093/bioinformatics/btq170">https://doi.org/10.1093/bioinformatics/btq170</a>.
+</div>
+</div>
+</div>

@@ -1,0 +1,23 @@
+
+
+
+<div class="panel panel-info">
+<div class="panel-heading text-center panel-relative">
+<div class="panel-heading">
+Descriptions and parameter settings
+</div>
+</div>
+<div class="panel-body">
+<p>CBioProfiler uses Cox proportional hazards regression (CoxPH) model to help the users to characterize the prognostic value of the biomarker after adjusting for other clinical factors. CoxPH model was visualized using R package ‘ggforestplot’(<a href="https://nightingalehealth.github.io/ggforestplot/articles/ggforestplot.html" class="uri">https://nightingalehealth.github.io/ggforestplot/articles/ggforestplot.html</a>).</p>
+<p>Parameters:</p>
+<ul>
+<li><p><strong>Select clinical features:</strong> Select clinical variables to included to CoxPH model.</p></li>
+<li><p><strong>Official gene symbol:</strong> Input one or more genes with official gene symbol that you want to included in the CoxPH model.</p></li>
+<li><p><strong>Survival time:</strong> Select survival time column. Example: “OS.time,” “RFS.time,” “PFS.time,” etc.</p></li>
+<li><p><strong>Survival status:</strong> Select survival status column. Example: “OS,” “RFS,” “PFS,” etc.</p></li>
+<li><p><strong>Figure legend position:</strong> Set the coordinates of the legend box. Their values should be between 0 and 1. c(0,0) corresponds to the ‘bottom left’ and c(1,1) corresponds to the ‘top right’ position.</p></li>
+<li><p><strong>Variable names:</strong> Define the variable names you interested,the number of variable names should be identical with the number of variables you included in the CoxPH model and use ‘|’ to separate multiple variable names.</p></li>
+<li><p><strong>Maximum of xticks:</strong> Define the maximum of xticks and clip to adjust the size of the forestplot.</p></li>
+</ul>
+</div>
+</div>
