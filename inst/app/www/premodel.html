@@ -1,0 +1,61 @@
+
+
+
+<div class="panel panel-info">
+<div class="panel-heading text-center panel-relative">
+<div class="panel-heading">
+Descriptions and parameter settings
+</div>
+</div>
+<div class="panel-body">
+<p>After benchmark experiment, CBioExplorer calculates risk score of each patients based on the coefficient (for Lasso, ridge, elastic net, glmboost, and Coxboost) or cumulative hazard function (for randomforestSRC) and the expression levels of the genes derived from the final model. Based on the risk score, CBioExplorer constructs and validates prediction model and draw a nomogram for the prediction of survival probability of patients.</p>
+<p>CBioExplorer constructs and evaluates prediction model using <strong>Survival ROC curve</strong>, <strong>KM plot</strong>, <strong>Forestplot</strong>, and <strong>CoxPH table</strong>.</p>
+<p>Common parameters for prediction model:</p>
+<ul>
+<li><p><strong>Survival time:</strong> Select survival time column. Example: “OS.time,” “RFS.time,” “PFS.time,” etc.</p></li>
+<li><p><strong>Survival status:</strong> Select survival status column. Example: “OS,” “RFS,” “PFS,” etc.</p></li>
+</ul>
+<p><strong>Survival ROC curve</strong> is generated using R package “survivalROC” <span class="citation">(Heagerty and Paramita Saha-Chaudhuri 2013)</span>.</p>
+<p>Parameters for Survival ROC curve are:</p>
+<ul>
+<li><p><strong>Prediction years:</strong> Define the time points in years the users want to predict based on time dependent ROC analysis. The longest time point should not exceed the max of survival (relapse) duration.</p></li>
+<li><p><strong>Method for survival ROC:</strong> Method for fitting joint distribution of (marker,t), either of KM or NNE, the default method is NNE.</p></li>
+<li><p><strong>Show optimal cutoff ?:</strong> Whether show the optimal cutoff of the risk score, which can be used to divided patients into different groups.</p></li>
+</ul>
+<p><strong>KM plot</strong> is generated using R package “survminer” <span class="citation">(Kassambara, Kosinski, and Biecek 2020)</span>. Figure 19 shows KM plot for the prediction model in the training set (A) and test set (B).</p>
+<p>Parameters specific for KM plot are:</p>
+<ul>
+<li><p><strong>Group by:</strong> The method for dividing patients into different groups. “Percentage” means that patients are divided into different groups based on percentage. “Value” mean patients are divided into different groups based on a specific value of the risk score of patients, such as the optimal cutoff calculated according to survival ROC curve.</p></li>
+<li><p><strong>Cutoff percentage:</strong> Input a cutoff (range:0-1) to categorize the samples into low and high risk group. Example if 0.25: 0%-25% = Low, 25%-100% high.</p></li>
+<li><p><strong>Cutoff value:</strong> Input a specific cutoff value to categorize the samples into low and high risk groups. The cutoff value should exceed the range of the risk score.</p></li>
+<li><p><strong>Label of X axis:</strong> Define the label of X axis of the KM plot.</p></li>
+<li><p><strong>Show p-value?:</strong> Whether show the P value for the KM plot.</p></li>
+<li><p><strong>Show risk table?:</strong> Whether show the risk table for the KM plot.</p></li>
+<li><p><strong>Show confidence interval?</strong> Whether show confidence interval for the KM plot.</p></li>
+<li><p><strong>Color of group 1</strong> Specify the color for the group 1 patient in the KM plot.</p></li>
+<li><p><strong>Color of group 2</strong> Specify the color for the group 2 patient in the KM plot.</p></li>
+</ul>
+<p><strong>Forestplot</strong> for the CoxPH model is drawn using the R package “ggplot2” <span class="citation">(Wickham et al. 2020)</span>.</p>
+<p>Parameters specific for forest plot are:</p>
+<ul>
+<li><p><strong>Clinical covariates:</strong> Select clinical variables to included to CoxPH model.</p></li>
+<li><p><strong>Variable names:</strong> Define the variable names you interested,the number of variable names should be identical with the number of variables you included in the CoxPH model and use ‘|’ to separate multiple variable names.</p></li>
+<li><p><strong>Maximum of xticks:</strong> Define the maximum of xticks and clip to adjust the size of the forestplot.</p></li>
+<li><p><em>Figure legend position:</em> Set the coordinates of the legend box. Their values should be between 0 and 1. c(0,0) corresponds to the ‘bottom left’ and c(1,1) corresponds to the ‘top right’ position.</p></li>
+</ul>
+</div>
+</div>
+<div id="reference" class="section level4 unnumbered">
+<h4 class="unnumbered">Reference</h4>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-survivalROC" class="csl-entry">
+Heagerty, Patrick J., and packaging by Paramita Saha-Chaudhuri. 2013. <em>survivalROC: Time-Dependent ROC Curve Estimation from Censored Survival Data</em>. <a href="https://CRAN.R-project.org/package=survivalROC">https://CRAN.R-project.org/package=survivalROC</a>.
+</div>
+<div id="ref-R-survminer" class="csl-entry">
+Kassambara, Alboukadel, Marcin Kosinski, and Przemyslaw Biecek. 2020. <em>Survminer: Drawing Survival Curves Using Ggplot2</em>. <a href="http://www.sthda.com/english/rpkgs/survminer/">http://www.sthda.com/english/rpkgs/survminer/</a>.
+</div>
+<div id="ref-R-ggplot2" class="csl-entry">
+Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, and Dewey Dunnington. 2020. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://CRAN.R-project.org/package=ggplot2">https://CRAN.R-project.org/package=ggplot2</a>.
+</div>
+</div>
+</div>
