@@ -66,10 +66,6 @@ library(CBioProfiler)
 CBioProfiler()
 ```
 
-## Docker image
-
-CBioProfiler has been packaged as a Docker image, users can use CBioProfiler through Docker without any additional configuration. When they finished installing Docker on their personal computer. The Docker image for CBioProfiler can be found at https://hub.docker.com/r/liuxiaoping2020/CBioProfiler/tags
-
 ## Contact
 
 If you have any questions regarding the installation and use of the CuratedCancerPrognosisData and CBioProfiler, please feel free to report them at https://github.com/liuxiaoping2020/CBioProfiler/issues, or you can contact the creator and maintainer of the package, Liu Xiaoping through liuxiaoping@whu.edu.cn.
